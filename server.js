@@ -3,13 +3,23 @@ require('dotenv').config();
  const express = require('express');
  const cors = require('cors');
  const morgan = require('morgan');
+ const passport = require('passport')
  //const passport 
 
  const {PORT,CLIENT_ORIGIN} = require('./config');
  const {dbConnect} = require('./db-mongoose')
+
+ const localStrategy = require('./auth/local-strategy');
+ const jwtStrategy = require('./auth/jwt');
+
+ const userRouter = require('./routes/users');
+ const authRouter = require('./routes/auth');
+
  const app = express();
  app.use(express.json());
 
+ passport.use(localStrategy);
+ passport.use(jwtStrategy);
 
  app.use(
 	 morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev',{
@@ -22,6 +32,8 @@ require('dotenv').config();
 		origin:CLIENT_ORIGIN
 	 })
  )
+ app.use('/api',userRouter)
+ app.use('/api',authRouter)
 
  // Catch-all 400
  app.use(function (req,res,next){
