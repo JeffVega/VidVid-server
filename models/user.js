@@ -12,8 +12,10 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required: true
-    }
-})
+    },
+    friends: [{ type: Schema.Types.ObjectId, ref: 'Friends'}]},
+    {timestamps: true})
+
 
 userSchema.set('toObject',{
     transform: function(doc,ret){

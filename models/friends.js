@@ -1,24 +1,22 @@
-const mongoose = require('mongoose');
-
-
-const friendSchema = new mongoose.Schema({
-    userId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
-        required:true
-    },
-    FriendShip:{
-        type:boolean,
-        required:true
-
+const friendSchema = new Schema({
+    requester: { type: Schema.Types.ObjectId, ref: 'Users'},
+    recipient: { type: Schema.Types.ObjectId, ref: 'Users'},
+    status: {
+      type: Number,
+      enums: [
+          0,    //'add friend',
+          1,    //'requested',
+          2,    //'pending',
+          3,    //'friends'
+      ]
     }
-});
-messageSchema.set('toObject',{
+  }, {timestamps: true})
+
+  friendSchema.set('toObject',{
     transform: function(doc,ret){
         ret.id = ret._id;
         delete ret._id;
         delete ret.__v;
     }
 })
-const Friend = mongoose.model('Friends',friendSchema);
-module.exports = Friend
+  module.exports = mongoose.model('Friends', friendsSchema)
