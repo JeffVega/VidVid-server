@@ -22,5 +22,5 @@ messageSchema.set('toObject',{
         delete ret.__v;
     }
 })
-const Mess = mongoose.model('Message',messageSchema);
-module.exports = Mess
+const Messages = mongoose.model('Message',messageSchema);
+module.exports = Messages

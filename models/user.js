@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    friends: [{ type: Schema.Types.ObjectId, ref: 'Friends'}]},
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Friends'}]},
     {timestamps: true})
 
 

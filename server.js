@@ -14,7 +14,7 @@ require('dotenv').config();
 
  const userRouter = require('./routes/users');
  const authRouter = require('./routes/auth');
-
+ const messRouter = require('./routes/messages')
  const app = express();
  app.use(express.json());
 
@@ -34,6 +34,7 @@ require('dotenv').config();
  )
  app.use('/api',userRouter)
  app.use('/api',authRouter)
+ app.use('/api',messRouter)
 
  // Catch-all 400
  app.use(function (req,res,next){
