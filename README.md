@@ -1,18 +1,18 @@
 # Vibster
 
-[x]  User 
-[x] User Routes
 
-[] Twitter Login
-[] Facebook Login
-[] Instagram Login
+# :tv:
+[] Create Video Chat
+[] Create Room 
+[] Delete Room 
 
 # :envelope:
 [x]  Messages 
 [] Messages Routes
+[] Save Message in Chat 
+[] Delete Message Once Chat is closed 
 
-[] Friends Schema
-[] Friends  Routes
+
 
 
 
