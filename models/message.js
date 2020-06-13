@@ -3,14 +3,16 @@
 const mongoose = require('mongoose')
 
 const messageSchema = new mongoose.Schema({
-    userId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
+  
+    message:{
+        type:String,
         required:true
     },
-    message:{
-        type:String
-    },
+     userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required: true
+    }
 
 });
 
@@ -22,5 +24,4 @@ messageSchema.set('toObject',{
         delete ret.__v;
     }
 })
-const Mess = mongoose.model('Message',messageSchema);
-module.exports = Mess
+ module.exports = mongoose.model('Messages',messageSchema);

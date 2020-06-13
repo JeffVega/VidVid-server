@@ -9,11 +9,8 @@ require('dotenv').config();
  const {PORT,CLIENT_ORIGIN} = require('./config');
  const {dbConnect} = require('./db-mongoose')
 
- const localStrategy = require('./auth/local-strategy');
- const jwtStrategy = require('./auth/jwt');
 
- const userRouter = require('./routes/users');
- const authRouter = require('./routes/auth');
+ const messRouter = require('./routes/messages')
 
  const app = express();
  app.use(express.json());
@@ -32,8 +29,6 @@ require('dotenv').config();
 		origin:CLIENT_ORIGIN
 	 })
  )
- app.use('/api',userRouter)
- app.use('/api',authRouter)
 
  // Catch-all 400
  app.use(function (req,res,next){
